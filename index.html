@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="color:aqua"> Formulário de Cadastro </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-black text-white">
+    <div  style="color:aqua" class="container mt-5">
+        <h1>Formulário de Cadastro</h1>
+        <form id="cadastroForm">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" class="form-control" id="cpf" placeholder="Digite seu CPF sem traços ou pontos" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" class="form-control" id="email" placeholder="Exemplo@E-mail.com" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" class="form-control" id="telefone" placeholder="(48) 9 9999-9999" required>
+            </div>
+            <button type="button" class="btn btn-danger mr-2" onclick="limparFormulario()">Apagar Tudo</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        <div class="mt-3">
+            <textarea class="form-control" id="dadosJson" rows="5" readonly></textarea>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+
