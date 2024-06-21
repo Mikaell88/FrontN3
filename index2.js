@@ -1,5 +1,4 @@
 function gravar() {
-    let id = document.getElementById('id').value; // Não há campo 'id' no HTML fornecido para dentistas
     let nome = document.getElementById('namedentista').value;
     let cro = document.getElementById('cro').value;
 
@@ -7,16 +6,15 @@ function gravar() {
     if (nome && cro) {
         let dados = {
             Nome: nome,
-            CRO: cro,
-            ID: parseInt(id)  // Converte para número, se necessário
+            CRO: cro
         };
 
         let url = 'http://localhost:3000/dentists';
 
         // Determina se a requisição é POST (inserção) ou PUT (atualização)
-        let method = id ? 'PUT' : 'POST';
+        let method = cro ? 'PUT' : 'POST'; // Se 'cro' estiver preenchido, é uma atualização (PUT), senão é uma inserção (POST)
         if (method === 'PUT') {
-            url += `/${id}`;
+            url += `/${cro}`;
         }
 
         fetch(url, {
@@ -78,7 +76,7 @@ function carregarDados() {
             let buttonExcluir = document.createElement('button');
             buttonExcluir.textContent = 'Excluir';
             buttonExcluir.onclick = function() {
-                excluir(dentista.ID);
+                excluir(dentista.CRO);
             };
             tdAcao.appendChild(buttonExcluir);
             tr.appendChild(tdAcao);
@@ -92,8 +90,8 @@ function carregarDados() {
     });
 }
 
-function excluir(id) {
-    fetch(`http://localhost:3000/dentists/${id}`, {
+function excluir(cro) {
+    fetch(`http://localhost:3000/dentists/${cro}`, {
         method: 'DELETE'
     })
     .then(response => {
@@ -107,4 +105,5 @@ function excluir(id) {
         alert('Erro ao excluir dentista. Verifique o console para mais detalhes.');
     });
 }
+
 

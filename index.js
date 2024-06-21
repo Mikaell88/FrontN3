@@ -57,7 +57,7 @@ function carregarDados() {
             let tr = document.createElement('tr');
 
             let tdId = document.createElement('td');
-            tdId.textContent = cliente.ID;
+            tdId.textContent = cliente.id; // Ajustado para 'id'
             tr.appendChild(tdId);
 
             let tdNome = document.createElement('td');
@@ -72,7 +72,7 @@ function carregarDados() {
             let buttonExcluir = document.createElement('button');
             buttonExcluir.textContent = 'Excluir';
             buttonExcluir.onclick = function() {
-                excluir(cliente.ID);
+                excluir(cliente.id); // Ajustado para 'id'
             };
             tdAcao.appendChild(buttonExcluir);
             tr.appendChild(tdAcao);
