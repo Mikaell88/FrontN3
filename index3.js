@@ -1,15 +1,15 @@
 function gravar() {
-    let nome = document.getElementById('name').value;
-    let email = document.getElementById('email').value;
+    let data = document.getElementById('consulta').value;
+    let nome = document.getElementById('nome').value;
 
     // Verifica se os campos obrigatórios estão preenchidos
-    if (nome && email) {
+    if (data && nome) {
         let dados = {
-            name: nome,
-            email: email
+            Data: data,
+            Nome: nome
         };
 
-        fetch('http://localhost:3000/customers', {
+        fetch('http://localhost:3000/appointments', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -18,18 +18,18 @@ function gravar() {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Erro ao gravar cliente');
+                throw new Error('Erro ao gravar consulta');
             }
             return response.json();
         })
         .then(data => {
-            console.log('Cliente gravado:', data);
+            console.log('Consulta gravada:', data);
             limpar(); // Limpa o formulário após gravar com sucesso
             carregarDados(); // Recarrega os dados após gravar
         })
         .catch(error => {
             console.error('Erro ao enviar dados para a API:', error);
-            alert('Erro ao gravar cliente. Verifique o console para mais detalhes.');
+            alert('Erro ao gravar consulta. Verifique o console para mais detalhes.');
         });
     } else {
         alert('Por favor, preencha todos os campos obrigatórios.');
@@ -37,12 +37,12 @@ function gravar() {
 }
 
 function limpar() {
-    document.getElementById('name').value = '';
-    document.getElementById('email').value = '';
+    document.getElementById('consulta').value = '';
+    document.getElementById('nome').value = '';
 }
 
 function carregarDados() {
-    fetch('http://localhost:3000/customers')
+    fetch('http://localhost:3000/appointments')
     .then(response => {
         if (!response.ok) {
             throw new Error('Erro ao carregar dados da API');
@@ -53,26 +53,22 @@ function carregarDados() {
         let tbody = document.getElementById('tbody');
         tbody.innerHTML = '';
 
-        data.forEach(cliente => {
+        data.forEach(consulta => {
             let tr = document.createElement('tr');
 
-            let tdId = document.createElement('td');
-            tdId.textContent = cliente.id; // Ajustado para 'id'
-            tr.appendChild(tdId);
+            let tdData = document.createElement('td');
+            tdData.textContent = consulta.Data;
+            tr.appendChild(tdData);
 
             let tdNome = document.createElement('td');
-            tdNome.textContent = cliente.name; // Ajustado para 'name'
+            tdNome.textContent = consulta.Nome;
             tr.appendChild(tdNome);
-
-            let tdEmail = document.createElement('td');
-            tdEmail.textContent = cliente.email; // Ajustado para 'email'
-            tr.appendChild(tdEmail);
 
             let tdAcao = document.createElement('td');
             let buttonExcluir = document.createElement('button');
             buttonExcluir.textContent = 'Excluir';
             buttonExcluir.onclick = function() {
-                excluir(cliente.id); // Ajustado para 'id'
+                excluir(consulta.ID);
             };
             tdAcao.appendChild(buttonExcluir);
             tr.appendChild(tdAcao);
@@ -87,17 +83,17 @@ function carregarDados() {
 }
 
 function excluir(id) {
-    fetch(`http://localhost:3000/customers/${id}`, {
+    fetch(`http://localhost:3000/appointments/${id}`, {
         method: 'DELETE'
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Erro ao excluir cliente');
+            throw new Error('Erro ao excluir consulta');
         }
         carregarDados();
     })
     .catch(error => {
-        console.error('Erro ao excluir cliente:', error);
-        alert('Erro ao excluir cliente. Verifique o console para mais detalhes.');
+        console.error('Erro ao excluir consulta:', error);
+        alert('Erro ao excluir consulta. Verifique o console para mais detalhes.');
     });
 }
