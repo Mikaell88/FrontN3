@@ -3,27 +3,23 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Clientes</title>
-    <script src="index.js"></script>
+    <title>Dentistas</title>
+    <script src="script2.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body onload="carregarDados();">
-    <h1>Clientes</h1>
+    <h1>Dentistas</h1>
     <p>
-        <a href="index2.html">Dentistas</a>
-        <a href="index3.html">Consultas</a>
-    </p>
-
-    <p>
-        <label for="name">Nome:</label>
-        <input type="text" id="name">
+        <label for="cro">CRO:</label>
+        <input type="number" id="cro">
     </p>
     <p>
-        <label for="email">E-mail:</label>
-        <input type="text" id="email">
+        <label for="namedentista">Nome:</label>
+        <input type="text" id="namedentista">
     </p>
+   
     <p class="btn-group">
         <button class="button" onclick="gravar();">Gravar</button>
         <button class="button" onclick="limpar();">Limpar</button>
@@ -31,16 +27,15 @@
     <table>
         <thead>
             <tr>
-                <th>ID</th>
+                <th>CRO</th>
                 <th>Nome</th>
-                <th>E-mail</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody id="tbody"></tbody>
     </table>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- Inclui o script JavaScript atualizado -->
 </body>
 
 </html>

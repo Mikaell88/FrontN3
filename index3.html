@@ -3,27 +3,23 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Clientes</title>
-    <script src="index.js"></script>
+    <title>Funcionários</title>
+    <script src="script3.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body onload="carregarDados();">
-    <h1>Clientes</h1>
+    <h1>Consultas</h1>
     <p>
-        <a href="index2.html">Dentistas</a>
-        <a href="index3.html">Consultas</a>
-    </p>
-
-    <p>
-        <label for="name">Nome:</label>
-        <input type="text" id="name">
+        <label for="consulta">Data:</label>
+        <input type="date" id="colsulta">
     </p>
     <p>
-        <label for="email">E-mail:</label>
-        <input type="text" id="email">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome">
     </p>
+   
     <p class="btn-group">
         <button class="button" onclick="gravar();">Gravar</button>
         <button class="button" onclick="limpar();">Limpar</button>
@@ -31,16 +27,13 @@
     <table>
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Data</th>
                 <th>Nome</th>
-                <th>E-mail</th>
-                <th>Ações</th>
+                <th></th>
             </tr>
         </thead>
         <tbody id="tbody"></tbody>
     </table>
-
-    <script src="script.js"></script>
 </body>
 
 </html>
