@@ -2,7 +2,7 @@ function gravar() {
     let data = document.getElementById('consulta').value;
     let nome = document.getElementById('nome').value;
 
-    // Verifica se os campos obrigatórios estão preenchidos
+    
     if (data && nome) {
         let dados = {
             Data: data,
@@ -24,8 +24,8 @@ function gravar() {
         })
         .then(data => {
             console.log('Consulta gravada:', data);
-            limpar(); // Limpa o formulário após gravar com sucesso
-            carregarDados(); // Recarrega os dados após gravar
+            limpar(); 
+            carregarDados(); 
         })
         .catch(error => {
             console.error('Erro ao enviar dados para a API:', error);

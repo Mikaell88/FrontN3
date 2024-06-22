@@ -2,7 +2,7 @@ function gravar() {
     let nome = document.getElementById('namedentista').value;
     let cro = document.getElementById('cro').value;
 
-    // Verifica se os campos obrigatórios estão preenchidos
+    
     if (nome && cro) {
         let dados = {
             Nome: nome,
@@ -11,8 +11,8 @@ function gravar() {
 
         let url = 'http://localhost:3000/dentists';
 
-        // Determina se a requisição é POST (inserção) ou PUT (atualização)
-        let method = cro ? 'PUT' : 'POST'; // Se 'cro' estiver preenchido, é uma atualização (PUT), senão é uma inserção (POST)
+        
+        let method = cro ? 'PUT' : 'POST';  inserção (POST)
         if (method === 'PUT') {
             url += `/${cro}`;
         }
@@ -32,8 +32,8 @@ function gravar() {
         })
         .then(data => {
             console.log('Dentista gravado/atualizado:', data);
-            limpar(); // Limpa o formulário após gravar com sucesso
-            carregarDados(); // Recarrega os dados após gravar
+            limpar(); 
+            carregarDados(); 
         })
         .catch(error => {
             console.error('Erro ao enviar dados para a API:', error);

@@ -2,7 +2,7 @@ function gravar() {
     let nome = document.getElementById('name').value;
     let email = document.getElementById('email').value;
 
-    // Verifica se os campos obrigatórios estão preenchidos
+    
     if (nome && email) {
         let dados = {
             name: nome,
@@ -24,8 +24,8 @@ function gravar() {
         })
         .then(data => {
             console.log('Cliente gravado:', data);
-            limpar(); // Limpa o formulário após gravar com sucesso
-            carregarDados(); // Recarrega os dados após gravar
+            limpar(); 
+            carregarDados(); 
         })
         .catch(error => {
             console.error('Erro ao enviar dados para a API:', error);
@@ -57,22 +57,22 @@ function carregarDados() {
             let tr = document.createElement('tr');
 
             let tdId = document.createElement('td');
-            tdId.textContent = cliente.id; // Ajustado para 'id'
+            tdId.textContent = cliente.id; 
             tr.appendChild(tdId);
 
             let tdNome = document.createElement('td');
-            tdNome.textContent = cliente.name; // Ajustado para 'name'
+            tdNome.textContent = cliente.name; 
             tr.appendChild(tdNome);
 
             let tdEmail = document.createElement('td');
-            tdEmail.textContent = cliente.email; // Ajustado para 'email'
+            tdEmail.textContent = cliente.email; 
             tr.appendChild(tdEmail);
 
             let tdAcao = document.createElement('td');
             let buttonExcluir = document.createElement('button');
             buttonExcluir.textContent = 'Excluir';
             buttonExcluir.onclick = function() {
-                excluir(cliente.id); // Ajustado para 'id'
+                excluir(cliente.id); 
             };
             tdAcao.appendChild(buttonExcluir);
             tr.appendChild(tdAcao);
