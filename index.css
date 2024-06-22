@@ -3,7 +3,7 @@ table {
 }
 
 th {
-    background-color: #04AA6D;
+    background-color: #005ca7;
     color: white;
 }
 
@@ -13,7 +13,7 @@ td {
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #005ca7;
 }
 
 input[type=number],
@@ -23,14 +23,14 @@ select {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #005ca7;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -40,7 +40,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #005ca7;
 }
 
 div {
@@ -51,7 +51,7 @@ div {
 
 input[type=submit],
 input[type=reset] {
-    background-color: #04AA6D;
+    background-color: #005ca7;
     border: none;
     color: white;
     padding: 16px 32px;
@@ -61,8 +61,8 @@ input[type=reset] {
 }
 
 .btn-group .button {
-    background-color: #04AA6D;
-    /* Green */
+    background-color: #005ca7;
+    
     border: none;
     color: white;
     padding: 10px 16px;
@@ -71,8 +71,32 @@ input[type=reset] {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .btn-group .button:hover {
-    background-color: #3e8e41;
+    background-color: #005ca7;
+}
+
+
+div {
+    border-radius: 5px; 
+    padding: 14px;                   
+    font-size: 20px;             
+    max-width: 170px;                
+    border: 2px solid #005ca7;          
+   
+     
+}
+
+
+div p {
+    
+    margin: 0;                      
+}
+
+div a {
+    color: #005ca7;
+   
+    text-decoration: none; 
 }
