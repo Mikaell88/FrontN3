@@ -20,7 +20,9 @@ function gravar() {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Erro ao gravar dentista');
+                return response.text().then(text => {
+                    throw new Error(text);
+                });
             }
             return response.json();
         })
@@ -94,12 +96,14 @@ function excluir(id) {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Erro ao excluir dentista');
+            return response.text().then(text => {
+                throw new Error(text);
+            });
         }
         carregarDados();
     })
     .catch(error => {
-        console.error('Erro ao excluir dentista:', error);
+        console.error('Erro ao excluir dentista:', error.message);
         alert('Erro ao excluir dentista. Verifique o console para mais detalhes.');
     });
 }
