@@ -1,12 +1,10 @@
 function gravar() {
-    let data = document.getElementById('consulta').value;
-    let nome = document.getElementById('nome').value;
+    let data = document.getElementById('consultaData').value;
 
-    // Verifica se os campos obrigatórios estão preenchidos
-    if (data && nome) {
+    
+    if (data) {
         let dados = {
-            Data: data,
-            Nome: nome
+            Data: data
         };
 
         fetch('http://localhost:3000/appointments', {
@@ -24,8 +22,8 @@ function gravar() {
         })
         .then(data => {
             console.log('Consulta gravada:', data);
-            limpar(); // Limpa o formulário após gravar com sucesso
-            carregarDados(); // Recarrega os dados após gravar
+            limpar(); 
+            carregarDados(); 
         })
         .catch(error => {
             console.error('Erro ao enviar dados para a API:', error);
@@ -37,8 +35,7 @@ function gravar() {
 }
 
 function limpar() {
-    document.getElementById('consulta').value = '';
-    document.getElementById('nome').value = '';
+    document.getElementById('consultaData').value = '';
 }
 
 function carregarDados() {
@@ -56,13 +53,13 @@ function carregarDados() {
         data.forEach(consulta => {
             let tr = document.createElement('tr');
 
+            let tdId = document.createElement('td');
+            tdId.textContent = consulta.ID;
+            tr.appendChild(tdId);
+
             let tdData = document.createElement('td');
             tdData.textContent = consulta.Data;
             tr.appendChild(tdData);
-
-            let tdNome = document.createElement('td');
-            tdNome.textContent = consulta.Nome;
-            tr.appendChild(tdNome);
 
             let tdAcao = document.createElement('td');
             let buttonExcluir = document.createElement('button');
