@@ -63,8 +63,8 @@ function carregarDados() {
             tr.appendChild(tdId);
 
             let tdCro = document.createElement('td');
-            tdCRO.textContent = dentista.cro;
-            tr.appendChild(tdCRO);
+            tdCro.textContent = dentista.cro;
+            tr.appendChild(tdCro);
 
             let tdName = document.createElement('td');
             tdName.textContent = dentista.name;
