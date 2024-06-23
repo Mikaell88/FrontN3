@@ -1,11 +1,11 @@
 function gravar() {
-    let nome = document.getElementById('name').value;
+    let name = document.getElementById('name').value;
     let email = document.getElementById('email').value;
 
     // Verifica se os campos obrigatórios estão preenchidos
-    if (nome && email) {
+    if (name && email) {
         let dados = {
-            name: nome,
+            name: name,
             email: email
         };
 
@@ -60,9 +60,9 @@ function carregarDados() {
             tdId.textContent = cliente.id; // Ajustado para 'id'
             tr.appendChild(tdId);
 
-            let tdNome = document.createElement('td');
-            tdNome.textContent = cliente.name; // Ajustado para 'name'
-            tr.appendChild(tdNome);
+            let tdName = document.createElement('td');
+            tdName.textContent = cliente.name; // Ajustado para 'name'
+            tr.appendChild(tdName);
 
             let tdEmail = document.createElement('td');
             tdEmail.textContent = cliente.email; // Ajustado para 'email'

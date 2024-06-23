@@ -1,24 +1,18 @@
 function gravar() {
-    let nome = document.getElementById('namedentista').value;
+    let name = document.getElementById('namedentista').value;
     let cro = document.getElementById('cro').value;
 
     // Verifica se os campos obrigatórios estão preenchidos
-    if (nome && cro) {
+    if (name && cro) {
         let dados = {
-            Nome: nome,
-            CRO: cro
+            name: name,
+            cro: cro
         };
 
         let url = 'http://localhost:3000/dentists';
 
-        // Determina se a requisição é POST (inserção) ou PUT (atualização)
-        let method = cro ? 'PUT' : 'POST'; // Se 'cro' estiver preenchido, é uma atualização (PUT), senão é uma inserção (POST)
-        if (method === 'PUT') {
-            url += `/${cro}`;
-        }
-
         fetch(url, {
-            method: method,
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -64,19 +58,23 @@ function carregarDados() {
         data.forEach(dentista => {
             let tr = document.createElement('tr');
 
-            let tdCRO = document.createElement('td');
-            tdCRO.textContent = dentista.CRO;
+            let tdId = document.createElement('td');
+            tdId.textContent = dentista.id; // Ajustado para 'id'
+            tr.appendChild(tdId);
+
+            let tdCro = document.createElement('td');
+            tdCRO.textContent = dentista.cro;
             tr.appendChild(tdCRO);
 
-            let tdNome = document.createElement('td');
-            tdNome.textContent = dentista.Nome;
-            tr.appendChild(tdNome);
+            let tdName = document.createElement('td');
+            tdName.textContent = dentista.name;
+            tr.appendChild(tdName);
 
             let tdAcao = document.createElement('td');
             let buttonExcluir = document.createElement('button');
             buttonExcluir.textContent = 'Excluir';
             buttonExcluir.onclick = function() {
-                excluir(dentista.CRO);
+                excluir(dentista.id);
             };
             tdAcao.appendChild(buttonExcluir);
             tr.appendChild(tdAcao);
@@ -90,8 +88,8 @@ function carregarDados() {
     });
 }
 
-function excluir(cro) {
-    fetch(`http://localhost:3000/dentists/${cro}`, {
+function excluir(id) {
+    fetch(`http://localhost:3000/dentists/${id}`, {
         method: 'DELETE'
     })
     .then(response => {
