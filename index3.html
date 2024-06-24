@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Consultas</title>
     <script src="index3.html"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="index.css">
-</head>
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
-<body onload="carregarDados();">
+  <body onload="carregarDados();">
     <h1>Consultas</h1>
     <div>
-        <p>
+      <p>
         <a href="index.html">Clientes -</a>
         <a href="index2.html">Dentistas</a>
-        </p>
+      </p>
     </div>
-   
+
     <p>
-        <label for="consultaData">Data:</label>
-        <input type="date" id="consultaData">
+      <label for="consultaData">Data e Hora:</label>
+      <input type="datetime-local" id="consultaData" />
+    </p>
+    <p>
+      <label for="idCliente">Id do cliente:</label>
+      <input type="integer" id="idCliente" />
+    </p>
+    <p>
+      <label for="idDentista">Id do dentista:</label>
+      <input type="integer" id="idDentista" />
     </p>
     
-   
     <p class="btn-group">
-        <button class="button" onclick="gravar();">Gravar</button>
-        <button class="button" onclick="limpar();">Limpar</button>
+      <button class="button" onclick="gravar();">Gravar</button>
+      <button class="button" onclick="limpar();">Limpar</button>
     </p>
     <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Data</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Data</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
     </table>
 
-    <script src="index3.js"></script> <!-- Inclui o script JavaScript atualizado -->
-</body>
-
+    <script src="index3.js"></script>
+    <!-- Inclui o script JavaScript atualizado -->
+  </body>
 </html>
