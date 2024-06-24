@@ -18,7 +18,9 @@ function gravar() {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Erro ao gravar cliente');
+                return response.text().then(text => {
+                    throw new Error(text);
+                });
             }
             return response.json();
         })
@@ -28,7 +30,7 @@ function gravar() {
             carregarDados(); // Recarrega os dados após gravar
         })
         .catch(error => {
-            console.error('Erro ao enviar dados para a API:', error);
+            console.error('Erro ao enviar dados para a API:', error.message);
             alert('Erro ao gravar cliente. Verifique o console para mais detalhes.');
         });
     } else {
@@ -45,7 +47,9 @@ function carregarDados() {
     fetch('http://localhost:3000/customers')
     .then(response => {
         if (!response.ok) {
-            throw new Error('Erro ao carregar dados da API');
+            return response.text().then(text => {
+                throw new Error(text);
+            });
         }
         return response.json();
     })
@@ -81,7 +85,7 @@ function carregarDados() {
         });
     })
     .catch(error => {
-        console.error('Erro ao carregar dados da API:', error);
+        console.error('Erro ao carregar dados da API:', error.message);
         alert('Erro ao carregar dados da API. Verifique o console para mais detalhes.');
     });
 }
@@ -92,12 +96,14 @@ function excluir(id) {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Erro ao excluir cliente');
+            return response.text().then(text => {
+                throw new Error(text);
+            });
         }
         carregarDados();
     })
     .catch(error => {
-        console.error('Erro ao excluir cliente:', error);
+        console.error('Erro ao excluir cliente:', error.message);
         alert('Erro ao excluir cliente. Verifique o console para mais detalhes.');
     });
 }

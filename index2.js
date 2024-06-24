@@ -27,12 +27,12 @@ function gravar() {
             return response.json();
         })
         .then(data => {
-            console.log('Dentista gravado/atualizado:', data);
+            console.log('Dentista gravado:', data);
             limpar(); // Limpa o formulário após gravar com sucesso
             carregarDados(); // Recarrega os dados após gravar
         })
         .catch(error => {
-            console.error('Erro ao enviar dados para a API:', error);
+            console.error('Erro ao enviar dados para a API:', error.message);
             alert('Erro ao gravar dentista. Verifique o console para mais detalhes.');
         });
     } else {
@@ -49,7 +49,9 @@ function carregarDados() {
     fetch('http://localhost:3000/dentists')
     .then(response => {
         if (!response.ok) {
-            throw new Error('Erro ao carregar dados da API');
+            return response.text().then(text => {
+                throw new Error(text);
+            });
         }
         return response.json();
     })
@@ -85,7 +87,7 @@ function carregarDados() {
         });
     })
     .catch(error => {
-        console.error('Erro ao carregar dados da API:', error);
+        console.error('Erro ao carregar dados da API:', error.message);
         alert('Erro ao carregar dados da API. Verifique o console para mais detalhes.');
     });
 }
